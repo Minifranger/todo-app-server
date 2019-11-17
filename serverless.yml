@@ -42,7 +42,7 @@ provider:
       Resource: "arn:aws:dynamodb:eu-west-3:*:*"
 
   environment:
-    DYNAMODB_TABLE: 'todo-dynamodb'
+    TODO_DYNAMODB: 'todo-dynamodb'
 
 # you can add packaging information here
 #package:
@@ -61,7 +61,7 @@ functions:
           path: todo
           method: post
           cors: true
-#          authorizer: aws_iam
+          authorizer: aws_iam
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

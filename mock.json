@@ -1,5 +1,6 @@
 {
-  "body": "{\"content\":\"hello world\"}",
+  "content": "hello test",
+  "frequency": 1,
   "requestContext": {
     "identity": {
       "cognitoIdentityId": "Minifranger"
