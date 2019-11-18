@@ -1,13 +1,15 @@
+import os
 import json
 import uuid
-from dynamodb import todo_table
 from logger import logger
+from libs.dynamodb import table
 
 
 def create(event, context):
     logger.info('event : {event}'.format(event=event))
 
     params = {
+        'TableName': os.environ['TODO_DYNAMODB'],
         'Item': {
             'userId': event['requestContext']['identity']['cognitoIdentityId'],
             'noteId': str(uuid.uuid1()),
@@ -15,8 +17,7 @@ def create(event, context):
             'frequency': int(event['frequency'])
         }
     }
-
-    todo_table.put_item(**params)
+    table(**params).put_item(**params)
 
     # TODO : error handling
     # TODO : await -> see serverlessstack
