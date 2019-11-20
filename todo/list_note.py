@@ -1,8 +1,7 @@
 import os
 import json
 from logger import logger
-from libs.dynamodb import table
-from utils import DecimalEncoder
+from utils import DecimalEncoder, dynamodb_table
 
 
 def list_note(event, context):
@@ -17,7 +16,7 @@ def list_note(event, context):
     }
 
     # TODO : async call
-    result = table(**params).query(**params)
+    result = dynamodb_table(**params).query(**params)
 
     # TODO : error handling
     response = {

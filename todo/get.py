@@ -1,8 +1,7 @@
 import os
 import json
 from logger import logger
-from libs.dynamodb import table
-from utils import DecimalEncoder
+from utils import DecimalEncoder, dynamodb_table
 
 
 def get(event, context):
@@ -17,7 +16,7 @@ def get(event, context):
     }
 
     # TODO : async call
-    result = table(**params).get_item(**params)
+    result = dynamodb_table(**params).get_item(**params)
 
     # TODO : error handling
     if result.get('Item'):

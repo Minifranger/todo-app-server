@@ -1,6 +1,6 @@
 import os
 from logger import logger
-from libs.dynamodb import table
+from utils import dynamodb_table
 
 
 def update(event, context):
@@ -20,7 +20,7 @@ def update(event, context):
     }
 
     # TODO : async call
-    table(**params).update_item(**params)
+    dynamodb_table(**params).update_item(**params)
 
     # TODO : error handling
     response = {

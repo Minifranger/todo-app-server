@@ -1,6 +1,6 @@
 import os
 from logger import logger
-from libs.dynamodb import table
+from utils import dynamodb_table
 
 
 def delete(event, context):
@@ -15,7 +15,7 @@ def delete(event, context):
     }
 
     # TODO : async call
-    table(**params).delete_item(**params)
+    dynamodb_table(**params).delete_item(**params)
 
     # TODO : error handling
     response = {

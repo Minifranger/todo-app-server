@@ -2,7 +2,7 @@ import os
 import json
 import uuid
 from logger import logger
-from libs.dynamodb import table
+from utils import dynamodb_table
 
 
 def create(event, context):
@@ -19,7 +19,7 @@ def create(event, context):
     }
 
     # TODO : async call
-    table(**params).put_item(**params)
+    dynamodb_table(**params).put_item(**params)
 
     # TODO : error handling
     response = {

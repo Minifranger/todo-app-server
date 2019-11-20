@@ -11,5 +11,5 @@ class DecimalEncoder(json.JSONEncoder):
         return super(DecimalEncoder, self).default(o)
 
 
-def table(**kwargs):
+def dynamodb_table(**kwargs):
     return boto3.resource('dynamodb').Table(kwargs.get('TableName', None))
