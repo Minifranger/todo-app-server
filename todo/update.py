@@ -18,10 +18,11 @@ def update(event, context):
             ":frequency": event.get('frequency', None)
         }
     }
-    result = table(**params).update_item(**params)
+
+    # TODO : async call
+    table(**params).update_item(**params)
 
     # TODO : error handling
-    # TODO : await -> see serverlessstack
     response = {
         "statusCode": 200
     }

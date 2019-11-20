@@ -13,10 +13,11 @@ def delete(event, context):
             'noteId': event['pathParameters']['id']
         }
     }
-    result = table(**params).delete_item(**params)
+
+    # TODO : async call
+    table(**params).delete_item(**params)
 
     # TODO : error handling
-    # TODO : await -> see serverlessstack
     response = {
         "statusCode": 200
     }

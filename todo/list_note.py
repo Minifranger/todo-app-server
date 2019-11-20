@@ -16,10 +16,10 @@ def list_note(event, context):
         }
     }
 
+    # TODO : async call
     result = table(**params).query(**params)
 
     # TODO : error handling
-    # TODO : await -> see serverlessstack
     response = {
         "statusCode": 200,
         "body": json.dumps(result['Items'], cls=DecimalEncoder)

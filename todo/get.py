@@ -16,10 +16,10 @@ def get(event, context):
         }
     }
 
+    # TODO : async call
     result = table(**params).get_item(**params)
 
     # TODO : error handling
-    # TODO : await -> see serverlessstack
     if result.get('Item'):
         response = {
             "statusCode": 200,

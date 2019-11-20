@@ -17,10 +17,11 @@ def create(event, context):
             'frequency': int(event['frequency'])
         }
     }
+
+    # TODO : async call
     table(**params).put_item(**params)
 
     # TODO : error handling
-    # TODO : await -> see serverlessstack
     response = {
         "statusCode": 200,
         "body": json.dumps(params['Item'])

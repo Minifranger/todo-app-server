@@ -1,5 +1,6 @@
 import decimal
 import json
+import boto3
 
 
 class DecimalEncoder(json.JSONEncoder):
@@ -8,3 +9,7 @@ class DecimalEncoder(json.JSONEncoder):
         if isinstance(o, decimal.Decimal):
             return str(o)
         return super(DecimalEncoder, self).default(o)
+
+
+def table(**kwargs):
+    return boto3.resource('dynamodb').Table(kwargs.get('TableName', None))
