@@ -70,6 +70,30 @@ functions:
           method: get
           cors: true
           authorizer: aws_iam
+  list_note:
+    handler: todo/list_note.list_note
+    events:
+      - http:
+          path: todo
+          method: get
+          cors: true
+          authorizer: aws_iam
+  update:
+    handler: todo/update.update
+    events:
+      - http:
+          path: notes/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
+  delete:
+    handler: todo/delete.delete
+    events:
+      - http:
+          path: notes/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

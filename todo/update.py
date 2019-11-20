@@ -1,11 +1,9 @@
 import os
-import json
 from logger import logger
 from libs.dynamodb import table
-from utils import DecimalEncoder
 
 
-def get(event, context):
+def update(event, context):
     logger.info('event : {event}'.format(event=event))
 
     params = {
@@ -13,19 +11,19 @@ def get(event, context):
         'Key': {
             'userId': event['requestContext']['identity']['cognitoIdentityId'],
             'noteId': event['pathParameters']['id']
+        },
+        'UpdateExpression': "SET content = :content, frequency = :frequency",
+        'ExpressionAttributeValues': {
+            ":content": event.get('content', None),
+            ":frequency": event.get('frequency', None)
         }
     }
-
-    result = table(**params).get_item(**params)
+    result = table(**params).update_item(**params)
 
     # TODO : error handling
     # TODO : await -> see serverlessstack
-    if result.get('Item'):
-        response = {
-            "statusCode": 200,
-            "body": json.dumps(result.get('Item'), cls=DecimalEncoder)
-        }
-        return response
-    else:
-        raise KeyError('Item not found')
+    response = {
+        "statusCode": 200
+    }
 
+    return response

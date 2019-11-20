@@ -1,11 +1,9 @@
 import os
-import json
 from logger import logger
 from libs.dynamodb import table
-from utils import DecimalEncoder
 
 
-def get(event, context):
+def delete(event, context):
     logger.info('event : {event}'.format(event=event))
 
     params = {
@@ -15,17 +13,12 @@ def get(event, context):
             'noteId': event['pathParameters']['id']
         }
     }
-
-    result = table(**params).get_item(**params)
+    result = table(**params).delete_item(**params)
 
     # TODO : error handling
     # TODO : await -> see serverlessstack
-    if result.get('Item'):
-        response = {
-            "statusCode": 200,
-            "body": json.dumps(result.get('Item'), cls=DecimalEncoder)
-        }
-        return response
-    else:
-        raise KeyError('Item not found')
+    response = {
+        "statusCode": 200
+    }
 
+    return response
