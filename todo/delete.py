@@ -8,10 +8,7 @@ def delete(event, context):
 
     params = {
         'TableName': os.environ['TODO_DYNAMODB'],
-        'Key': {
-            'userId': event['requestContext']['identity']['cognitoIdentityId'],
-            'noteId': event['pathParameters']['id']
-        }
+        'Key': {'noteId': event['pathParameters']['id']}
     }
 
     # TODO : async call

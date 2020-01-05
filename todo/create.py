@@ -11,7 +11,6 @@ def create(event, context):
     params = {
         'TableName': os.environ['TODO_DYNAMODB'],
         'Item': {
-            'userId': event['requestContext']['identity']['cognitoIdentityId'],
             'noteId': str(uuid.uuid1()),
             'content': str(event['content']),
             'frequency': int(event['frequency'])

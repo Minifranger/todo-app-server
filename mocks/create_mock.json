@@ -1,9 +1,4 @@
 {
   "content": "hello test",
-  "frequency": 1.0,
-  "requestContext": {
-    "identity": {
-      "cognitoIdentityId": "Minifranger"
-    }
-  }
+  "frequency": 1.0
 }

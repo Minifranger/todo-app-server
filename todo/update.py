@@ -8,10 +8,7 @@ def update(event, context):
 
     params = {
         'TableName': os.environ['TODO_DYNAMODB'],
-        'Key': {
-            'userId': event['requestContext']['identity']['cognitoIdentityId'],
-            'noteId': event['pathParameters']['id']
-        },
+        'Key': {'noteId': event['pathParameters']['id']},
         'UpdateExpression': "SET content = :content, frequency = :frequency",
         'ExpressionAttributeValues': {
             ":content": event.get('content', None),

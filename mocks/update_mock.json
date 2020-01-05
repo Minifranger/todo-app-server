@@ -3,10 +3,5 @@
   "frequency": 2.0,
   "pathParameters": {
     "id": "3cf98aee-096d-11ea-95f4-503eaa43ee59"
-  },
-  "requestContext": {
-    "identity": {
-      "cognitoIdentityId": "Minifranger"
-    }
   }
 }
